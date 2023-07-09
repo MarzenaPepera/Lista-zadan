@@ -1,8 +1,6 @@
-<div>
-    <h3>Zadania wykonane: {{finished.length}}</h3>
-    <div *ngFor="let done of finished">
-        <li>
-            {{done.name}}
-        </li>
-    </div>
-</div>
+<h3>Zadania wykonane: {{finished.length}}</h3>
+<ul>
+    <li appChecked appDate [date]="done.end" *ngFor="let done of finished">
+        {{done.name}}
+    </li>
+</ul>

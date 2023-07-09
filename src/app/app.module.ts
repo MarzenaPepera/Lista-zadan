@@ -8,13 +8,17 @@ import { AddTaskComponent } from './add-task/add-task.component';
 import { ManageTaskComponent } from './manage-task/manage-task.component';
 import { FinishedTaskComponent } from './finished-task/finished-task.component';
 import { TaskService } from './services/task.service';
+import { CheckedDirective } from './shared/checked.directive';
+import { DateDirective } from './shared/date.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddTaskComponent,
     ManageTaskComponent,
-    FinishedTaskComponent
+    FinishedTaskComponent,
+    CheckedDirective,
+    DateDirective
   ],
   imports: [
     BrowserModule,

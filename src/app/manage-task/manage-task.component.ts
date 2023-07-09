@@ -20,6 +20,7 @@ export class ManageTaskComponent {
   }
 
   done(task: Task) {
+    task.end = new Date;
     this.taskService.move(task);
   }
 
