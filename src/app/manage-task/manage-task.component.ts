@@ -15,7 +15,7 @@ export class ManageTaskComponent {
 
   constructor(private taskService: TaskService) {
     this.taskService.gettasksListObs().subscribe((tasks: Array<Task>) => {
-      this.tasks = tasks;
+      this.tasks = tasks.slice();
     });
   }
 

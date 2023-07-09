@@ -1,7 +1,7 @@
 <ul *ngIf="tasks.length>0 ; else none">
   <h3 [ngStyle]="{color: getColor()}"> Lista zadań: {{tasks.length}}</h3>
-    <li appDate [date]="task.created" *ngFor="let task of tasks; let odd = odd" [ngClass]="{'odd-li': odd, 'last-li':tasks.length===1}">
-      {{task.name}}
+    <li appDate [date]="task.created" *ngFor="let task of tasks | sortName; let odd = odd" [ngClass]="{'odd-li': odd, 'last-li':tasks.length===1}">
+      {{task.name | transformTask: '!'}}
       <button (click)="done(task)" type="button" class="btn btn-success">Zrobione</button>
       <button (click)="delete(task)" class="btn btn-danger">Usuń</button>
     </li>

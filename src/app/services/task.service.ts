@@ -16,8 +16,9 @@ export class TaskService {
   constructor() {
     this.tasksList = [
       { name: 'Nauka Angulara', created: new Date },
-      { name: 'Gotowanie ', created: new Date },
-      { name: 'Sprzątanie ', created: new Date },
+      { name: 'Gotowanie', created: new Date },
+      { name: 'Zakupy', created: new Date },
+      { name: 'Sprzątanie', created: new Date },
     ];
     this.tasksListObs.next(this.tasksList);
   }
