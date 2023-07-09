@@ -1,0 +1,37 @@
+<h1 class="container">{{ title }} </h1>
+<div>
+  <div class="container">
+    <div>
+      Zadanie:
+      <input [(ngModel)]="newTask">
+      <button (click)="add()">Dodaj</button>
+    </div>
+  </div>
+  <div class="container">
+
+      <div *ngIf="chores.length>0 ; else none">
+        <h3> Lista zadań:</h3>
+        <div *ngFor="let chore of chores; let i= index">
+          <li>
+            {{chore}}
+            <button (click)="done(chore, i)">Zrobione</button>
+            <button (click)="delete(i)">Usuń</button>
+          </li>
+        </div>
+      </div>
+        <ng-template #none>
+          <h3>Brak zadań! Brawo! </h3>
+        </ng-template>
+
+
+
+    <div>
+      <h3>Zadania wykonane: {{finished.length}}</h3>
+      <div *ngFor="let done of finished">
+        <li>
+          {{done}}
+        </li>
+      </div>
+    </div>
+  </div>
+</div>
