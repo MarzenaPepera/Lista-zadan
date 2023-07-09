@@ -1,6 +1,7 @@
 import { ViewEncapsulation } from '@angular/core'; //a nie '@angular/compiler'
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TaskService } from '../services/task.service';
+import { Task } from '../model/task';
 
 @Component({
   selector: 'app-manage-task',
@@ -10,23 +11,23 @@ import { TaskService } from '../services/task.service';
 })
 export class ManageTaskComponent {
 
-  chores: string[] = [];
+  tasks: Array<Task> = [];
 
   constructor(private taskService: TaskService) {
-    this.taskService.getchoresListObs().subscribe((chores: Array<string>) => {
-      this.chores = chores;
+    this.taskService.gettasksListObs().subscribe((tasks: Array<Task>) => {
+      this.tasks = tasks;
     });
   }
 
-  done(chore: string) {
-    this.taskService.move(chore);
+  done(task: Task) {
+    this.taskService.move(task);
   }
 
-  delete(chore: string) {
-    this.taskService.remove(chore);
+  delete(task: Task) {
+    this.taskService.remove(task);
   }
 
   getColor(): string {
-    return this.chores.length >= 5 ? 'red' : 'green';
+    return this.tasks.length >= 5 ? 'red' : 'green';
   }
 }

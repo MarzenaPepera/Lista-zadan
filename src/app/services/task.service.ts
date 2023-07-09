@@ -1,43 +1,48 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Task } from '../model/task';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
-  
-  private choresList: Array<string> = [];
-  private finishedList: Array<string> = [];
 
-  private choresListObs = new BehaviorSubject<Array<string>>(this.choresList);
-  private finishedListObs = new BehaviorSubject<Array<string>>(this.finishedList);
+  private tasksList: Array<Task> = [];
+  private finishedList: Array<Task> = [];
+
+  private tasksListObs = new BehaviorSubject<Array<Task>>([]);
+  private finishedListObs = new BehaviorSubject<Array<Task>>([]);
 
   constructor() {
-    this.choresList = ['Nauka Angulara', 'Gotowanie', 'Sprzątanie'];
-    this.choresListObs.next(this.choresList);
+    this.tasksList = [
+      { name: 'Nauka Angulara', created: new Date },
+      { name: 'Gotowanie ', created: new Date },
+      { name: 'Sprzątanie ', created: new Date },
+    ];
+    this.tasksListObs.next(this.tasksList);
   }
 
-  addTask(chore: string) {
-    this.choresList.push(chore);
-    this.choresListObs.next(this.choresList);
+  addTask(task: Task) {
+    this.tasksList.push(task);
+    this.tasksListObs.next(this.tasksList);
   }
 
-  move(chore: string) {
-    this.finishedList.push(chore);
-    this.remove(chore);
+  move(task: Task) {
+    this.finishedList.push(task);
+    this.remove(task);
   }
 
-  remove(chore: string) {
-    this.choresList=this.choresList.filter(e=>e!=chore);
-    this.choresListObs.next(this.choresList);
+  remove(task: Task) {
+    this.tasksList = this.tasksList.filter(e => e != task);
+    this.tasksListObs.next(this.tasksList);
     this.finishedListObs.next(this.finishedList);
   }
 
-  getchoresListObs(): Observable<Array<string>>{
-    return this.choresListObs.asObservable();
+  gettasksListObs(): Observable<Array<Task>> {
+    return this.tasksListObs.asObservable();
   }
 
-  getfinishedListObs(): Observable<Array<string>>{
+  getfinishedListObs(): Observable<Array<Task>> {
     return this.finishedListObs.asObservable();
   }
 }
