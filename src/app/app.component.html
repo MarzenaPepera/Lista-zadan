@@ -1,12 +1,12 @@
 <h1 class="container">{{ title }} </h1>
 <div>
   <div class="container">
-    <app-add-task (eventChore)="addTask($event)"></app-add-task>
+    <app-add-task></app-add-task>
   </div>
 
   <div class="container">
-    <app-manage-task [chores]="choresList" (eventFinished)="move($event)" (eventFinished)="remove($event)"></app-manage-task>
+    <app-manage-task></app-manage-task>
 
-    <app-finished-task [finished]="finishedList"></app-finished-task>
+    <app-finished-task></app-finished-task>
   </div>
 </div>

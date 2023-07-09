@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { TaskService } from '../services/task.service';
 
 @Component({
   selector: 'app-add-task',
@@ -8,11 +9,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class AddTaskComponent {
   newTask: string = '';
 
-  @Output()
-  eventChore = new EventEmitter<string>();
+  constructor(private taskService: TaskService){
+  }
 
   add() {
-    this.eventChore.emit(this.newTask);
+    this.taskService.addTask(this.newTask);
     this.newTask = '';
   }
 }

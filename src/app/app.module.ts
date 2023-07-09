@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { ManageTaskComponent } from './manage-task/manage-task.component';
 import { FinishedTaskComponent } from './finished-task/finished-task.component';
+import { TaskService } from './services/task.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { FinishedTaskComponent } from './finished-task/finished-task.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { TaskService } from '../services/task.service';
 
 @Component({
   selector: 'app-finished-task',
@@ -6,6 +7,12 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./finished-task.component.css']
 })
 export class FinishedTaskComponent {
-  @Input()
+
   finished: Array<string> = [];
+
+  constructor(private taskService: TaskService){
+    this.taskService.getfinishedListObs().subscribe((finished: Array<string>) => {
+      this.finished = finished;
+    });
+  }
 }
